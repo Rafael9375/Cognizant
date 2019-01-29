@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7928539A-4826-4EA6-991B-83F4CC479E11}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cognizant.WindowsForms</RootNamespace>
+    <AssemblyName>Cognizant.WindowsForms</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.8.14.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.8.14\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Acesso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Acesso.Designer.cs">
+      <DependentUpon>Acesso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastro.Designer.cs">
+      <DependentUpon>Cadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cotacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cotacao.Designer.cs">
+      <DependentUpon>Cotacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DadosAcesso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DadosAcesso.Designer.cs">
+      <DependentUpon>DadosAcesso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCompraParcelada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCompraParcelada.Designer.cs">
+      <DependentUpon>FormCompraParcelada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDeposito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDeposito.Designer.cs">
+      <DependentUpon>FormDeposito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPagarParcela.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPagarParcela.Designer.cs">
+      <DependentUpon>FormPagarParcela.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTransferencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTransferencia.Designer.cs">
+      <DependentUpon>FormTransferencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inicio.Designer.cs">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Acesso.resx">
+      <DependentUpon>Acesso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cadastro.resx">
+      <DependentUpon>Cadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cotacao.resx">
+      <DependentUpon>Cotacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DadosAcesso.resx">
+      <DependentUpon>DadosAcesso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCompraParcelada.resx">
+      <DependentUpon>FormCompraParcelada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDeposito.resx">
+      <DependentUpon>FormDeposito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPagarParcela.resx">
+      <DependentUpon>FormPagarParcela.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTransferencia.resx">
+      <DependentUpon>FormTransferencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inicio.resx">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cognizant.Application.Services\Cognizant.App.Services.csproj">
+      <Project>{C98E5E74-2EFC-4C86-A531-2738C9E79801}</Project>
+      <Name>Cognizant.App.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cognizant.Application\Cognizant.App.csproj">
+      <Project>{5D332A4D-12A4-4D4D-A61C-E58E01A0D562}</Project>
+      <Name>Cognizant.App</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cognizant.Domain\Cognizant.Domain.csproj">
+      <Project>{E1F96415-5336-4A9A-A5E1-D03B6299A359}</Project>
+      <Name>Cognizant.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

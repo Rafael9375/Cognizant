@@ -1,0 +1,38 @@
+alter trigger SomaSaldoTransferencia on Transacao for insert
+as
+begin
+declare
+	@saldoAnterior decimal(7,2),
+	@saldoAtual decimal(7,2),
+	@saldo decimal(7,2),
+	@valor decimal(7,2),
+	@contaReceb int,
+	@contaSaida int,
+	@id int,
+	@tipo varchar(30);
+	
+	select @id = TransacaoId from inserted
+	select @contaSaida = ContaId from inserted;
+	select @tipo = Tipo from inserted;
+	select @contaReceb = ContaIdTransferencia from inserted;
+	select @valor = Valor from inserted;
+	
+	select @saldo = Conta.SaldoDebito
+	from Conta join inserted on Conta.ContaId = inserted.ContaId
+	where Conta.ContaId = @contaSaida;
+	
+
+	select @saldoAnterior = Conta.SaldoDebito
+	from Conta join inserted on Conta.ContaId = inserted.ContaIdTransferencia
+	where Conta.ContaId = @contaReceb;
+	
+	set @saldoAtual = @saldoAnterior + @valor;
+	select @tipo as teste;
+	if @tipo = 'Transferência' and @saldo >= @valor
+	begin
+		update Conta set SaldoDebito = @saldoAtual where ContaId = @contaReceb;
+		update Conta set SaldoDebito = (@saldo - @valor) where ContaId = @contaSaida
+	end;
+	else
+		update Transacao set Observacao = 'Transação Negada' where TransacaoId = @id;
+end

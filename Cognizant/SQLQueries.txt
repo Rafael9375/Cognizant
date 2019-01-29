@@ -1,0 +1,27 @@
+create trigger Compra on Transacao for insert
+as
+begin
+	declare
+		@valor decimal(7,2),
+		@contaId int,
+		@credito decimal(7,2),
+		@tipo varchar(30);
+
+		select 
+			@valor = Valor, 
+			@contaId = ContaId,
+			@tipo = Tipo
+		from inserted;
+
+		select
+			@credito = Conta.CreditoDisponivel
+		from Conta
+		join inserted on
+			Conta.ContaId = inserted.ContaId;
+
+		if(@valor <= @credito and @tipo = 'Compra')
+		begin
+			update Conta set CreditoDisponivel = (@credito - @valor) where
+			ContaId = @contaId
+		end
+end
