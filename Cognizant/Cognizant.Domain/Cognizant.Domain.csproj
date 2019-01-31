@@ -35,10 +35,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Compra.cs" />
     <Compile Include="Entities\Conta.cs" />
     <Compile Include="Entities\Pessoa.cs" />
     <Compile Include="Entities\Transacao.cs" />
     <Compile Include="Interfaces\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\IRepositoryCompra.cs" />
     <Compile Include="Interfaces\IRepositoryConta.cs" />
     <Compile Include="Interfaces\IRepositoryPessoa.cs" />
     <Compile Include="Interfaces\IRepositoryTransacao.cs" />

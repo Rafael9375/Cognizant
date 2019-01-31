@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCompra.cs" />
     <Compile Include="AppConta.cs" />
     <Compile Include="AppCtor.cs" />
     <Compile Include="AppPessoa.cs" />

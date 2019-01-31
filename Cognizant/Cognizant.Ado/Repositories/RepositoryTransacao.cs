@@ -28,13 +28,20 @@ namespace Cognizant.Ado.Repositories
             strQuery += String.Format("{0}, ", obj.ContaId);
             if (obj.ContaIdTransferencia == 0)
             {
-                strQuery += "null";
+                strQuery += "null, ";
             }
             else
             {
-                strQuery += String.Format("{0}", obj.ContaIdTransferencia);
+                strQuery += String.Format("{0}, ", obj.ContaIdTransferencia);
             }
-            
+            if (obj.CompraId == 0)
+            {
+                strQuery += "null, ";
+            }
+            else
+            {
+                strQuery += String.Format("{0}", obj.CompraId);
+            }
             strQuery += ")";
             db.ExecutaComando(strQuery);
         }
@@ -62,7 +69,8 @@ namespace Cognizant.Ado.Repositories
                 Valor = decimal.Parse(reader["Valor"].ToString()),
                 Observacao = reader["Obsevacao"].ToString(),
                 ContaId = int.Parse(reader["ContaId"].ToString()),
-                ContaIdTransferencia = int.Parse(reader["ContaIdTransferencia"].ToString())
+                ContaIdTransferencia = int.Parse(reader["ContaIdTransferencia"].ToString()),
+                CompraId = int.Parse(reader["CompraId"].ToString())
             };
         }
 
@@ -84,7 +92,8 @@ namespace Cognizant.Ado.Repositories
             strQuery += String.Format("Observacao = '{0}', ", obj.Observacao);
             strQuery += String.Format("Agendamento = '{0}', ", obj.Agendamento);
             strQuery += String.Format("ContaId = {0},", obj.ContaId);
-            strQuery += String.Format("ContaIdTransferencia = {0} ", obj.ContaIdTransferencia);
+            strQuery += String.Format("ContaIdTransferencia = {0} ,", obj.ContaIdTransferencia);
+            strQuery += String.Format("CompraId = {0} ", obj.CompraId);
             strQuery += "where TransacaoId = " + obj.TransacaoId.ToString();
             db.ExecutaComando(strQuery);
         }
@@ -103,7 +112,8 @@ namespace Cognizant.Ado.Repositories
                     Observacao = reader["Observacao"].ToString(),
                     Agendamento = DateTime.Parse(reader["Agendamento"].ToString()),
                     ContaId = int.Parse(reader["ContaId"].ToString()),
-                    ContaIdTransferencia = int.Parse(reader["ContaIdTransferencia"].ToString())
+                    ContaIdTransferencia = int.Parse(reader["ContaIdTransferencia"].ToString()),
+                    CompraId = int.Parse(reader["CompraId"].ToString())
                 };
                 lista.Add(tr);
             }

@@ -34,10 +34,11 @@ namespace Cognizant.WindowsForms
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             
-            if (cmbTipoTrans.Text == "Pagar parcelas")
+            if (cmbTipoTrans.Text == "Pagamento")
             {
                 this.Close();
                 FormPagarParcela pagar = new FormPagarParcela(conta);
+                pagar.StartPosition = FormStartPosition.CenterScreen;
                 pagar.Show();
             }
 
@@ -45,6 +46,7 @@ namespace Cognizant.WindowsForms
             {
                 this.Close();
                 FormDeposito dep = new FormDeposito(conta);
+                dep.StartPosition = FormStartPosition.CenterScreen;
                 dep.ShowDialog();
             }
 
@@ -52,6 +54,7 @@ namespace Cognizant.WindowsForms
             {
                 this.Close();
                 FormTransferencia tranf = new FormTransferencia(conta);
+                tranf.StartPosition = FormStartPosition.CenterScreen;
                 tranf.ShowDialog();
             }
 
@@ -60,6 +63,7 @@ namespace Cognizant.WindowsForms
                 this.Close();
                 FormCompraParcelada parcelamento = 
                     new FormCompraParcelada(conta);
+                parcelamento.StartPosition = FormStartPosition.CenterScreen;
                 parcelamento.Show();
             }
 

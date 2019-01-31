@@ -15,6 +15,7 @@ namespace Cognizant.WindowsForms
     public partial class DadosAcesso : Form
     {
         private readonly AppConta appConta;
+        private FormAguarde aguarde = new FormAguarde();
 
         public DadosAcesso()
         {
@@ -27,15 +28,19 @@ namespace Cognizant.WindowsForms
         private void btnAcessar_Click(object sender, EventArgs e)
         {
             btnAcessar.Enabled = false;
+            txtContaId.Enabled = false;
             try
             {
                 Conta conta;
+                
                 conta = appConta.GetById(int.Parse(txtContaId.Text.ToString()));
                 Acesso acesso = new Acesso(conta);
+                acesso.StartPosition = FormStartPosition.CenterScreen;
                 acesso.Show();
             }
             catch (Exception)
             {
+                aguarde.Close();
                 MessageBox.Show("A conta de entrada " + 
                     "não foi localizada na base de dados",
                     "Erro!");
@@ -43,7 +48,9 @@ namespace Cognizant.WindowsForms
             }
             finally
             {
+                aguarde.Close();
                 btnAcessar.Enabled = true;
+                txtContaId.Enabled = true;
             }
 
         }

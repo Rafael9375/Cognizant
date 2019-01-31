@@ -75,6 +75,12 @@
     <Compile Include="DadosAcesso.Designer.cs">
       <DependentUpon>DadosAcesso.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAguarde.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAguarde.Designer.cs">
+      <DependentUpon>FormAguarde.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCompraParcelada.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DadosAcesso.resx">
       <DependentUpon>DadosAcesso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAguarde.resx">
+      <DependentUpon>FormAguarde.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCompraParcelada.resx">
       <DependentUpon>FormCompraParcelada.cs</DependentUpon>

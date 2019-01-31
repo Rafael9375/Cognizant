@@ -18,7 +18,9 @@ namespace Cognizant.Domain.Entities
         public DateTime Agendamento { get; set; }
         public int ContaId { get; set; }
         public int ContaIdTransferencia { get; set; }
+        public int CompraId { get; set; }
         public virtual Conta ContaTransferencia { get; set; }
         public virtual Conta conta { get; set; }
+        public Compra Compra { get; set; }
     }
 }

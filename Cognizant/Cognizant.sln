@@ -35,6 +35,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL Queries", "SQL Queries"
 		TriggerTransferencia.txt = TriggerTransferencia.txt
 	EndProjectSection
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Cognizant.App.Installer", "Cognizant.App.Installer\Cognizant.App.Installer.vdproj", "{536D5843-A831-4936-ACAD-04BD1CF30220}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,8 @@ Global
 		{C98E5E74-2EFC-4C86-A531-2738C9E79801}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C98E5E74-2EFC-4C86-A531-2738C9E79801}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C98E5E74-2EFC-4C86-A531-2738C9E79801}.Release|Any CPU.Build.0 = Release|Any CPU
+		{536D5843-A831-4936-ACAD-04BD1CF30220}.Debug|Any CPU.ActiveCfg = Debug
+		{536D5843-A831-4936-ACAD-04BD1CF30220}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,5 +80,6 @@ Global
 		{1A446502-696B-476B-A2A5-27C66F288893} = {5CF56817-9A5C-491F-8F82-62BAC179BB58}
 		{C98E5E74-2EFC-4C86-A531-2738C9E79801} = {1A446502-696B-476B-A2A5-27C66F288893}
 		{FBA2A100-51F7-4FA9-B40D-13DD60E0102B} = {1A446502-696B-476B-A2A5-27C66F288893}
+		{536D5843-A831-4936-ACAD-04BD1CF30220} = {1A446502-696B-476B-A2A5-27C66F288893}
 	EndGlobalSection
 EndGlobal

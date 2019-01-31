@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AdoCon\DbCon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\RepositoryCompra.cs" />
     <Compile Include="Repositories\RepositoryConta.cs" />
     <Compile Include="Repositories\RepositoryPessoa.cs" />
     <Compile Include="Repositories\RepositoryTransacao.cs" />

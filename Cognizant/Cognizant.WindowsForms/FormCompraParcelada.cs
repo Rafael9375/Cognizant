@@ -2,13 +2,6 @@
 using Cognizant.App.Services;
 using Cognizant.Domain.Entities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Cognizant.WindowsForms
@@ -18,7 +11,8 @@ namespace Cognizant.WindowsForms
         readonly Conta conta;
         readonly AjustarCampoMonetario ajustar;
         private Transacao transacao;
-        private AppTransacao appTransacao;
+        private Compra compra;
+        private AppCompra appCompra;
         string mensagemErro = "A transação não pôde ser completada." +
                     "\nVerifique se os campos foram preenchidos corretamente";
 
@@ -28,30 +22,27 @@ namespace Cognizant.WindowsForms
             InitializeComponent();
             conta = _conta;
             ajustar = new AjustarCampoMonetario();
-            appTransacao = AppCtor.AplicacaoTransacao();
+            appCompra = AppCtor.AplicacaoCompra();
         }
 
         private void btnCompra_Click(object sender, EventArgs e)
         {
             if ((qtdParcelas.Value * decimal.Parse(txtValPar.Text.ToString()) <=
-                decimal.Parse(conta.CreditoDisponivel.ToString())))
+                decimal.Parse(conta.CreditoDisponivel.ToString()))&&
+                decimal.Parse(txtValPar.Text) > 0)
             {
                 try
                 {
-                    transacao = new Transacao()
+                    compra = new Compra()
                     {
-                        Tipo = "Compra",
-                        Funcao = "Crédito",
-                        Valor = qtdParcelas.Value *
-                    decimal.Parse(txtValPar.Text.ToString()),
-                        Observacao = qtdParcelas.Value + "x" +
-                    txtValPar.Text.ToString() + " " +
-                    txtObsCompra.Text.ToString(),
-                        Agendamento = DateTime.Now,
-                        ContaId = conta.ContaId
+                        dbContaId = conta.ContaId,
+                        dbLoja = txtObsCompra.Text,
+                        dbParcelas = int.Parse(qtdParcelas.Value.ToString()),
+                        dbValorParcela = decimal.Parse(txtValPar.Text),
+                        dbParcelasQuitadas = 0,
+                        dbQuitado = 0
                     };
-
-                    appTransacao.Add(transacao);
+                    appCompra.Add(compra);
                 }
                 catch (Exception)
                 {

@@ -20,6 +20,7 @@ namespace Cognizant.WindowsForms
         private void btnAcesso_Click(object sender, EventArgs e)
         {
             DadosAcesso dadosForm = new DadosAcesso();
+            dadosForm.StartPosition = FormStartPosition.CenterScreen;
             dadosForm.ShowDialog();
         }
 

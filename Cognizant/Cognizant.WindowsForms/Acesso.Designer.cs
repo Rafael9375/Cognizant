@@ -84,7 +84,7 @@
             this.cmbTipoTrans.FormattingEnabled = true;
             this.cmbTipoTrans.Items.AddRange(new object[] {
             "Depósito",
-            "Pagar parcelas",
+            "Pagamento",
             "Parcelamento",
             "Transferência"});
             this.cmbTipoTrans.Location = new System.Drawing.Point(12, 136);

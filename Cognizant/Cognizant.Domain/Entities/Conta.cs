@@ -13,5 +13,6 @@ namespace Cognizant.Domain.Entities
         public decimal SaldoDebito { get; set; }
         public decimal CreditoDisponivel { get; set; }
         public virtual IEnumerable<Transacao> Transacoes { get; set; }
+        public virtual IEnumerable<Compra> Compras { get; set; }
     }
 }
