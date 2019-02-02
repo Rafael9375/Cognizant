@@ -15,7 +15,7 @@ namespace Cognizant.Ado.Repositories
         public void Add(Conta obj)
         {
             var strQuery = "";
-            strQuery += String.Format("insert into Conta values (");
+            strQuery += String.Format("insert into Conta output inserted.ContaId values (");
             strQuery += String.Format("{0},", obj.ContaId);
             strQuery += String.Format("{0},", ajuste.PontoVirgula(obj.SaldoDebito));
             strQuery += String.Format("{0}", ajuste.PontoVirgula(obj.CreditoDisponivel));

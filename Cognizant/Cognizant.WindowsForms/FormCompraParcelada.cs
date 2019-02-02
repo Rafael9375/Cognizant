@@ -39,8 +39,7 @@ namespace Cognizant.WindowsForms
                         dbLoja = txtObsCompra.Text,
                         dbParcelas = int.Parse(qtdParcelas.Value.ToString()),
                         dbValorParcela = decimal.Parse(txtValPar.Text),
-                        dbParcelasQuitadas = 0,
-                        dbQuitado = 0
+                        dbParcelasQuitadas = 0
                     };
                     appCompra.Add(compra);
                 }

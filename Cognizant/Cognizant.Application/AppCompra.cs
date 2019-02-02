@@ -35,6 +35,11 @@ namespace Cognizant.App
             repo.Remove(obj);
         }
 
+        public IEnumerable<Compra> SelecionarCompras(int id)
+        {
+            return repo.SelecionarCompras(id);
+        }
+
         public void Update(Compra obj)
         {
             repo.Update(obj);

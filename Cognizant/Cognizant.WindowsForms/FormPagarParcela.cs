@@ -3,12 +3,7 @@ using Cognizant.App.Services;
 using Cognizant.Domain.Entities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Cognizant.WindowsForms
@@ -22,6 +17,8 @@ namespace Cognizant.WindowsForms
         private int[] _compraId;
         private int compraId;
         private AppCompra appCompra;
+        private List<Compra> tr;
+        private Compra compra;
         string mensagemErro = "A transação não pôde ser completada." +
                     "\nVerifique se os campos foram preenchidos corretamente";
 
@@ -37,15 +34,7 @@ namespace Cognizant.WindowsForms
 
         private void btnPagar_Click(object sender, EventArgs e)
         {
-            String[] aux = cbCompra.Text.Split(' ');
-            var loja = "";
-            for (int i = 1; i < aux.Count(); i++)
-            {
-                loja += aux[i] + " ";
-            }
-            aux = aux[0].Split('x');
-            aux[1] = aux[1].Replace('.', ',');
-            var valorParcela = decimal.Parse(aux[1].ToString());
+            var valorParcela = compra.dbValorParcela;
             var qtdPar = qtdPagarPar.Value;
             var pagamento = qtdPar * valorParcela;
             var saldo = conta.SaldoDebito;
@@ -61,10 +50,7 @@ namespace Cognizant.WindowsForms
                         Tipo = "Pagamento",
                         Funcao = "Débito",
                         Agendamento = DateTime.Now,
-                        Observacao =
-                        qtdPar.ToString() + "x" +
-                        valorParcela.ToString() + " " +
-                        loja.ToString(),
+                        Observacao = compra.dbLoja,
                         CompraId = compraId
                     };
                     appTransacao.Add(transacao);
@@ -85,12 +71,13 @@ namespace Cognizant.WindowsForms
         {
             try
             {
-                List<Transacao> tr = appTransacao.SelecionarCompras(conta.ContaId).ToList();
+                tr = appCompra.SelecionarCompras(conta.ContaId).ToList();
                 _compraId = new int[tr.Count()];
                 for (int i = 0; i < tr.Count(); i++)
                 {
-                    _compraId[i] = int.Parse(tr[i].CompraId.ToString());
-                    cbCompra.Items.Add(tr[i].Observacao);
+                    _compraId[i] = int.Parse(tr[i].dbCompraId.ToString());
+                    cbCompra.Items.Add(tr[i].dbLoja);
+                    
                 }
             }
             catch (Exception)
@@ -102,31 +89,22 @@ namespace Cognizant.WindowsForms
 
         private void qtdPagarPar_ValueChanged(object sender, EventArgs e)
         {
-            String[] aux = cbCompra.Text.Split(' ');
-            aux = aux[0].Split('x');
-            aux[1] = aux[1].Replace('.', ',');
-            var maxPars = int.Parse(aux[0]);
-            var valorParcela = decimal.Parse(aux[1].ToString());
-            var qtdPar = qtdPagarPar.Value;
-            var pagamento = qtdPar * valorParcela;
-            lblTotalPagar.Text = pagamento.ToString();
-            qtdPagarPar.Maximum = maxPars;
-
+            var totalPagar =
+                decimal.Parse
+                ((compra.dbValorParcela * qtdPagarPar.Value).ToString());
+            lblTotalPagar.Text = totalPagar.ToString();
         }
 
         private void cbCompra_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String[] aux = cbCompra.Text.Split(' ');
-            aux = aux[0].Split('x');
-            aux[1] = aux[1].Replace('.', ',');
-            var maxPars = int.Parse(aux[0]);
-            var valorParcela = decimal.Parse(aux[1].ToString());
-            var qtdPar = qtdPagarPar.Value;
-            var pagamento = qtdPar * valorParcela;
-            lblTotalPagar.Text = pagamento.ToString();
+            compra = tr[cbCompra.SelectedIndex];
+            var maxPars = compra.dbParcelasPendentes;
             qtdPagarPar.Maximum = maxPars;
+            compraId = compra.dbCompraId;
+            lblTotalPagar.Text = compra.dbValorParcela.ToString();
+            qtdPagarPar.Minimum = 1;
+            qtdPagarPar.Value = qtdPagarPar.Minimum;
             qtdPagarPar.Enabled = true;
-            compraId = _compraId[cbCompra.SelectedIndex];
             
         }
     }

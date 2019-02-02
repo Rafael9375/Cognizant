@@ -120,14 +120,6 @@ namespace Cognizant.Ado.Repositories
             return lista;
         }
 
-        public IEnumerable<Transacao> SelecionarCompras(int id)
-        {
-            var strQuery = "select * from Compras where ";
-            strQuery += String.Format("ContaId = {0}", id);
-            var reader = db.ExecutaComandoComRetorno(strQuery);
-            var retorno = TransaformaReaderEmLista(reader);
-            db.con.Close();
-            return retorno;
-        }
+        
     }
 }

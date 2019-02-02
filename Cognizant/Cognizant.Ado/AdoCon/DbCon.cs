@@ -25,8 +25,9 @@ namespace Cognizant.Ado.AdoCon
                 CommandType = CommandType.Text,
                 Connection = con
             };
-            cmdComando.ExecuteNonQuery();
+            var teste = (int)cmdComando.ExecuteScalar();            
             con.Close();
+            
         }
 
         public SqlDataReader ExecutaComandoComRetorno(string strQuery)
@@ -35,11 +36,7 @@ namespace Cognizant.Ado.AdoCon
             con.Open();
             var cmdComando = new SqlCommand(strQuery, con);
             return reader = cmdComando.ExecuteReader();
-            
-            
         }
-
-        
                 
     }
 }

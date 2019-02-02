@@ -8,7 +8,7 @@ namespace Cognizant.Domain.Entities
         public int dbParcelas { get; set; }
         public int dbParcelasQuitadas { get; set; }
         public decimal dbValorParcela { get; set; }
-        public int dbQuitado { get; set; }
+        public int dbParcelasPendentes { get; set; }
         public int dbContaId { get; set; }
         public virtual Conta dbContaCompra { get; set; }
 

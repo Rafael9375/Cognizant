@@ -20,7 +20,6 @@ namespace Cognizant.Ado.Repositories
             strQuery += String.Format("{0}, ", obj.dbParcelas);
             strQuery += String.Format("{0}, ", obj.dbParcelasQuitadas);
             strQuery += String.Format("{0}, ", ajustar.PontoVirgula(obj.dbValorParcela));
-            strQuery += String.Format("{0}, ", obj.dbQuitado);
             strQuery += String.Format("{0}", obj.dbContaId);
             strQuery += ")";
             db.ExecutaComando(strQuery);
@@ -50,7 +49,6 @@ namespace Cognizant.Ado.Repositories
                 dbParcelas = int.Parse(reader["Parcelas"].ToString()),
                 dbParcelasQuitadas = int.Parse(reader["ParcelasQuitadas"].ToString()),
                 dbValorParcela = decimal.Parse(reader["ValorParcela"].ToString()),
-                dbQuitado = int.Parse(reader["Quitado"].ToString()),
                 dbContaId = int.Parse(reader["ContaId"].ToString())
             };
             db.con.Close();
@@ -72,7 +70,6 @@ namespace Cognizant.Ado.Repositories
             strQuery += String.Format("Parcelas = {0}, ", obj.dbParcelas);
             strQuery += String.Format("ParcelasQuitadas = {0}, ", obj.dbParcelasQuitadas);
             strQuery += String.Format("ValorParcela = {0}, ", ajustar.PontoVirgula(obj.dbValorParcela));
-            strQuery += String.Format("Quitado = {0}, ", obj.dbQuitado);
             strQuery += String.Format("ContaId = {0}", obj.dbContaId);
             strQuery += String.Format("where CompraId = ", obj.dbCompraId);
             db.ExecutaComando(strQuery);
@@ -85,17 +82,27 @@ namespace Cognizant.Ado.Repositories
             {
                 Compra compra = new Compra()
                 {
-                    dbCompraId = int.Parse(reader["dbCompraId"].ToString()),
-                    dbLoja = reader["dbLoja"].ToString(),
-                    dbParcelas = int.Parse(reader["dbParcelas"].ToString()),
-                    dbParcelasQuitadas = int.Parse(reader["dbParcelasQuitadas"].ToString()),
-                    dbValorParcela = decimal.Parse(reader["dbValorParcela"].ToString()),
-                    dbQuitado = int.Parse(reader["dbQuitado"].ToString()),
-                    dbContaId = int.Parse(reader["dbContaId"].ToString())
+                    dbCompraId = int.Parse(reader["CompraId"].ToString()),
+                    dbLoja = reader["Observacao"].ToString(),
+                    dbValorParcela = decimal.Parse(reader["ValorParcela"].ToString()),
+                    dbParcelasPendentes = int.Parse(reader["ParcelasPendentes"].ToString())
                 };
-                lista.Add(compra);
+                if (compra.dbParcelasPendentes != 0)
+                {
+                    lista.Add(compra);
+                }
             }
             return lista;
+        }
+
+        public IEnumerable<Compra> SelecionarCompras(int id)
+        {
+            var strQuery = "select * from Compras where ";
+            strQuery += String.Format("ContaId = {0}", id);
+            var reader = db.ExecutaComandoComRetorno(strQuery);
+            var retorno = TransformaEmLista(reader);
+            db.con.Close();
+            return retorno;
         }
     }
 }
