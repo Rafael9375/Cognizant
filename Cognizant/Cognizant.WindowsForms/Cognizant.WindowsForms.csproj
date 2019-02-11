@@ -93,6 +93,12 @@
     <Compile Include="FormDeposito.Designer.cs">
       <DependentUpon>FormDeposito.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormExtrato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormExtrato.Designer.cs">
+      <DependentUpon>FormExtrato.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPagarParcela.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDeposito.resx">
       <DependentUpon>FormDeposito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExtrato.resx">
+      <DependentUpon>FormExtrato.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPagarParcela.resx">
       <DependentUpon>FormPagarParcela.cs</DependentUpon>

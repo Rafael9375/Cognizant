@@ -73,6 +73,7 @@
             this.Controls.Add(this.btnAcesso);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Inicio";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Teste Cognizant";
             this.ResumeLayout(false);
 

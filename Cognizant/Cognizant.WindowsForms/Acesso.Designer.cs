@@ -84,6 +84,7 @@
             this.cmbTipoTrans.FormattingEnabled = true;
             this.cmbTipoTrans.Items.AddRange(new object[] {
             "Depósito",
+            "Extrato",
             "Pagamento",
             "Parcelamento",
             "Transferência"});

@@ -36,7 +36,7 @@ namespace Cognizant.Ado.Repositories
             }
             if (obj.CompraId == 0)
             {
-                strQuery += "null, ";
+                strQuery += "null";
             }
             else
             {
@@ -111,15 +111,35 @@ namespace Cognizant.Ado.Repositories
                     Valor = decimal.Parse(reader["Valor"].ToString()),
                     Observacao = reader["Observacao"].ToString(),
                     Agendamento = DateTime.Parse(reader["Agendamento"].ToString()),
-                    ContaId = int.Parse(reader["ContaId"].ToString()),
-                    ContaIdTransferencia = int.Parse(reader["ContaIdTransferencia"].ToString()),
-                    CompraId = int.Parse(reader["CompraId"].ToString())
+                    ContaId = int.Parse(reader["ContaId"].ToString())
+                    //ContaIdTransferencia = int.Parse(reader["ContaIdTransferencia"].ToString()),
+                    //CompraId = int.Parse(reader["CompraId"].ToString())
                 };
+                var ContaIdTransferencia = reader["ContaIdTransferencia"].ToString();
+                var CompraId = reader["CompraId"].ToString();
+                if (ContaIdTransferencia != "")
+                {
+                    tr.ContaIdTransferencia =
+                        int.Parse(reader["ContaIdTransferencia"].ToString());
+                }
+                if (CompraId != "")
+                {
+                    tr.CompraId =
+                        int.Parse(reader["CompraId"].ToString());
+                }
                 lista.Add(tr);
             }
             return lista;
         }
 
-        
+        public IEnumerable<Transacao> BuscarExtrato(int id)
+        {
+            var strQuery = "";
+            strQuery += "select * from Transacao ";
+            strQuery += String.Format("where ContaId = {0} ", id);
+            strQuery += "order by Agendamento desc";
+            var reader = db.ExecutaComandoComRetorno(strQuery);
+            return TransaformaReaderEmLista(reader);
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace Cognizant.Ado.AdoCon
                 CommandType = CommandType.Text,
                 Connection = con
             };
-            var teste = (int)cmdComando.ExecuteScalar();            
+            cmdComando.ExecuteNonQuery();
             con.Close();
             
         }

@@ -67,10 +67,20 @@ namespace Cognizant.WindowsForms
                 parcelamento.Show();
             }
 
+            if (cmbTipoTrans.Text == "Extrato")
+            {
+                this.Close();
+                FormExtrato extrato = new FormExtrato(conta);
+                extrato.StartPosition = FormStartPosition.CenterScreen;
+                extrato.ShowDialog();
+            }
+
+
+
         }
 
-        
-        
+
+
         private void cmbTipoTrans_SelectedIndexChanged(object sender, EventArgs e)
         {
             
